@@ -7,3 +7,7 @@ COPY conf /etc/postfix
 COPY rsyslog.conf /etc/rsyslog.conf
 
 COPY monit-service.conf /opt/monit/etc/conf.d 
+
+VOLUME ["/var/spool/postfix"]
+
+EXPOSE 25
