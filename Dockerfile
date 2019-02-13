@@ -1,4 +1,4 @@
-FROM rawmind/alpine-monit:0.5.20-2
+FROM rawmind/alpine-monit:5.25-3
 MAINTAINER Fabio Rauber <fabiorauber@gmail.com>
 
 RUN apk add --no-cache bash postfix postfix-pcre rsyslog
