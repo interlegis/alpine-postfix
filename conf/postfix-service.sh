@@ -7,7 +7,8 @@ function log {
 function serviceConf {
   # Substitute configuration
   for VARIABLE in `env | cut -f1 -d=`; do
-    sed -i "s={{ $VARIABLE }}=${!VARIABLE}=g" /etc/postfix/*.cf
+    VAR=${VARIABLE//:/_}
+    sed -i "s={{ $VAR }}=${!VAR}=g" /etc/postfix/*.cf
   done
 
   # Override Postfix configuration
