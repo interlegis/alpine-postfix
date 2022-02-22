@@ -38,10 +38,8 @@ function serviceStart {
   serviceConf
   # Actually run Postfix
   log "[ Starting Postfix... ]"
-  rm -f /var/run/rsyslogd.pid
-  nohup /usr/lib/postfix/master &
+  nohup /usr/sbin/postfix start-fg &
   echo $! > /var/run/postfix.pid
-  nohup rsyslogd -n &
 }
 
 function serviceStop {
@@ -53,10 +51,10 @@ function serviceRestart {
   log "[ Restarting Postfix... ]"
   serviceStop
   serviceStart
-  /opt/monit/bin/monit reload
 }
 
 export DOMAIN=${DOMAIN:-"localhost"}
+export HOSTNAME=${HOSTNAME:-"localhost"}
 export MESSAGE_SIZE_LIMIT=${MESSAGE_SIZE_LIMIT:-"50000000"}
 export RELAYNETS=${RELAYNETS:-""}
 export RELAYHOST=${RELAYHOST:-""}

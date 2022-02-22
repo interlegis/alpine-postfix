@@ -55,3 +55,4 @@ smtpd_recipient_restrictions =
 ###############
 # Extra Settings
 ###############
+maillog_file = /dev/stdout
