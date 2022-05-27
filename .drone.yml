@@ -9,7 +9,6 @@ steps:
     registry: porto.interlegis.leg.br
     mirror: https://registrycache.interlegis.leg.br
     pull: if-not-exists
-    dockerfile: docker/Dockerfile
     auto_tag: true
     username:
       from_secret: porto_user
