@@ -5,7 +5,7 @@ steps:
 - name: docker
   image: plugins/docker
   settings:
-    repo: porto.interlegis.leg.br/seit/alpine-postfix
+    repo: porto.interlegis.leg.br/library/alpine-postfix
     registry: porto.interlegis.leg.br
     mirror: https://registrycache.interlegis.leg.br
     pull: if-not-exists
