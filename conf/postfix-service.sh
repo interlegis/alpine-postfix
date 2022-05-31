@@ -38,19 +38,7 @@ function serviceStart {
   serviceConf
   # Actually run Postfix
   log "[ Starting Postfix... ]"
-  nohup /usr/sbin/postfix start-fg &
-  echo $! > /var/run/postfix.pid
-}
-
-function serviceStop {
-  log "[ Stopping Postfix... ]"
-  kill `cat /var/run/postfix.pid`
-}
-
-function serviceRestart {
-  log "[ Restarting Postfix... ]"
-  serviceStop
-  serviceStart
+  /usr/sbin/postfix start-fg 
 }
 
 export DOMAIN=${DOMAIN:-"localhost"}
@@ -59,16 +47,4 @@ export MESSAGE_SIZE_LIMIT=${MESSAGE_SIZE_LIMIT:-"50000000"}
 export RELAYNETS=${RELAYNETS:-""}
 export RELAYHOST=${RELAYHOST:-""}
 
-case "$1" in
-  "start")
-    serviceStart &>> /proc/1/fd/1
-  ;;
-  "stop")
-    serviceStop &>> /proc/1/fd/1
-  ;;
-  "restart")
-    serviceRestart &>> /proc/1/fd/1
-  ;;
-  *) echo "Usage: $0 restart|start|stop"
-  ;;
-esac
+serviceStart &>> /proc/1/fd/1
