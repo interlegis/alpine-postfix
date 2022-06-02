@@ -52,6 +52,11 @@ smtpd_recipient_restrictions =
    permit_mynetworks,
    permit
 
+# Relay restrictions
+smtpd_relay_restrictions = 
+   permit_mynetworks,
+   reject
+
 ###############
 # Extra Settings
 ###############
