@@ -14,7 +14,7 @@ function serviceConf {
   # Override Postfix configuration
   if [ -f /overrides/postfix.cf ]; then
     while read line; do
-      postconf -e "$line"
+      [[ -n "$line" && "$line" != [[:blank:]#]* ]] && postconf -e "$line"
     done < /overrides/postfix.cf
     echo "Loaded '/overrides/postfix.cf'"
   else

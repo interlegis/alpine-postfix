@@ -4,5 +4,4 @@ services:
     build: .
     ports:
       - 25
-    entrypoint: /bin/bash
     tty: true
