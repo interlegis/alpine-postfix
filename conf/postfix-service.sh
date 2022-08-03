@@ -5,6 +5,11 @@ function log {
 }
 
 function serviceConf {
+  # Check hostname variable
+  if [[ ! ${HOSTNAME} =~ \. ]]; then
+    HOSTNAME=$HOSTNAME.$DOMAIN
+  fi
+
   # Substitute configuration
   for VARIABLE in `env | cut -f1 -d=`; do
     VAR=${VARIABLE//:/_}
@@ -41,7 +46,7 @@ function serviceStart {
   /usr/sbin/postfix start-fg 
 }
 
-export DOMAIN=${DOMAIN:-"localhost"}
+export DOMAIN=${DOMAIN:-"localdomain"}
 export HOSTNAME=${HOSTNAME:-"localhost"}
 export MESSAGE_SIZE_LIMIT=${MESSAGE_SIZE_LIMIT:-"50000000"}
 export RELAYNETS=${RELAYNETS:-""}
