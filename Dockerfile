@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.23
 LABEL MAINTAINER="Fabio Rauber <fabiorauber@gmail.com>"
 
 RUN apk add --no-cache bash postfix postfix-pcre 
